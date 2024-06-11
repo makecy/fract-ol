@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 16:46:28 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/11 00:10:37 by mstefano         ###   ########.fr       */
+/*   Created: 2024/06/11 00:34:32 by mstefano          #+#    #+#             */
+/*   Updated: 2024/06/11 00:34:46 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
 
-int main(int ac, char **av)
+double map(int value, int start1, int stop1, double start2, double stop2)
 {
-    if (ac == 2 && !ft_strncmp(av[1], "mandelbrot" , 10) || (ac == 4  && !ft_strncmp(av[1], "julia", 5)))
-    {
-        
-    }
-    else
+    return start2 + (stop2 - start2) * ((value - start1) / (double)(stop1 - start1));
 }
