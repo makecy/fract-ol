@@ -6,7 +6,7 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:46:28 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/12 17:11:15 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/12 21:20:39 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int ac, char **av)
 {
-	mlx_t *mlx;
+    mlx_t *mlx;
 
     if (ac == 2 && !ft_strncmp(av[1], "mandelbrot", 10))
     {
@@ -25,6 +25,7 @@ int main(int ac, char **av)
             return (1);
         }
         render_mandelbrot(mlx);
+        mlx_scroll_hook(mlx, mouse_scroll_event, mlx);
     }
     else if (ac == 4 && !ft_strncmp(av[1], "julia", 5))
     {
@@ -35,6 +36,7 @@ int main(int ac, char **av)
             return (1);
         }
         /* render_julia(); // To be implemented */
+        mlx_scroll_hook(mlx, mouse_scroll_event, mlx);
     }
     else
     {

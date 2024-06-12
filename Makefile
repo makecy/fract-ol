@@ -33,6 +33,7 @@ SRC =	main.c \
 		mandelbrot.c \
 		utils.c \
 		color.c \
+		zooming.c \
 #Objects
 
 OBJ = $(SRC:.c=.o) 

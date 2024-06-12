@@ -6,7 +6,7 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 00:10:17 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/12 17:45:24 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/12 22:56:10 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 void put_pixel_row(mlx_image_t* image, int x, int y)
 {
+    double a;
+    double b;
+    t_complex c = {a, b};;
+	int iterations;
+	int color;
     if (x >= WIDTH)
         return;
-    double a = map(x, 0, WIDTH, -2.0, 1.0);
-    double b = map(y, 0, HEIGHT, -1.0, 1.0);
-    t_complex c = {a, b};
-    int iterations = mandelbrot(c, MAX_ITERATIONS);
-    int color = get_color(iterations);
+	a = map(x, 0, WIDTH, -2.0, 1.0);
+	b = map(y, 0, HEIGHT, -1.0, 1.0);
+	iterations = mandelbrot(c, MAX_ITERATIONS);
+    color = get_color(iterations);
     mlx_put_pixel(image, x, y, color);
     put_pixel_row(image, x + 1, y);
 }
@@ -35,7 +39,8 @@ void put_pixel(mlx_image_t* image, int y)
 
 void render_mandelbrot(mlx_t *mlx)
 {
-    mlx_image_t *image = mlx_new_image(mlx, WIDTH, HEIGHT);
+    mlx_image_t *image;
+	image = mlx_new_image(mlx, WIDTH, HEIGHT);
     put_pixel(image, 0);
     mlx_image_to_window(mlx, image, 0, 0);
     mlx_loop(mlx);
@@ -46,7 +51,8 @@ int mandelbrot(t_complex c, int max_iterations)
 {
     t_complex z = {0, 0};
 	double temp;
-    int iterations = 0;
+    int iterations;
+	iterations = 0;
 
     while (z.real * z.real + z.imag * z.imag <= 4.0 && iterations < max_iterations)
     {
