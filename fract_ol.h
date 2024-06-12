@@ -6,7 +6,7 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 16:29:51 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/11 00:39:06 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:02:35 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ typedef struct s_mlx
 
 /* MANDELBROT */
 int mandelbrot(t_complex c, int max_iterations);
-void render_mandelbrot(t_mlx *mlx);
+void render_mandelbrot(mlx_t *mlx);
 void put_pixel(mlx_image_t* image, int x, int y);
 
 /* UTILS */
-double map(double value, double start1, double stop1, double start2, double stop2);
+double map(int value, int start1, int stop1, double start2, double stop2);
 
 
 /* COLOR */

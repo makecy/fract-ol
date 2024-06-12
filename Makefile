@@ -30,7 +30,9 @@ LIBRARIES = $(LIBRARIES_PATH)/libft.a
 # Sources
 
 SRC =	main.c \
-		
+		mandelbrot.c \
+		utils.c \
+		color.c \
 #Objects
 
 OBJ = $(SRC:.c=.o) 
@@ -46,7 +48,7 @@ $(LIBRARIES):
 	@echo "$(GREEN)$(CHECK)Compiled Libraries Successfully$(CHECK)$(RESET)"
 
 $(NAME): $(LIBRARIES) $(MLX) $(OBJ)  
-	$(CC) $(CFLAGS) $(MLX) $(MLX_FLAGS) $(LIBRARIES) -o $(NAME) $(OBJ) $(INCLUDE)
+	$(CC) $(CFLAGS) $(MLX) $(MLX_FLAGS) $(LIBRARIES) -o $(NAME) $(OBJ) $(INCLUDE) -lglfw
 	@echo "$(GREEN)$(CHECK)Compiled fract-ol Successfully$(CHECK)$(RESET)"
 
 submodule:

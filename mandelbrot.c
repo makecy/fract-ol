@@ -6,13 +6,13 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 00:10:17 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/11 00:43:10 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:04:33 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
 
-void put_pixel(mlx_image_t* image, int x, int y)
+void put_pixel_row(mlx_image_t* image, int x, int y)
 {
     if (x < WIDTH)
     {
@@ -25,20 +25,25 @@ void put_pixel(mlx_image_t* image, int x, int y)
         int color = get_color(iterations);
         mlx_put_pixel(image, x, y, color);
 
-        put_pixel(image, x + 1, y);
-    }
-    else if (y < HEIGHT)
-    {
-        put_pixel(image, 0, y + 1);
+        put_pixel_row(image, x + 1, y);
     }
 }
 
-void render_mandelbrot(t_mlx *mlx)
+void put_pixel(mlx_image_t* image, int x, int y)
 {
-    mlx_image_t *image = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
+    if (y < HEIGHT)
+    {
+        put_pixel_row(image, x, y);
+        put_pixel(image, x, y + 1);
+    }
+}
+
+void render_mandelbrot(mlx_t *mlx)
+{
+    mlx_image_t *image = mlx_new_image(mlx, WIDTH, HEIGHT);
     put_pixel(image, 0, 0);
-    mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, image, 0, 0);
-    mlx_destroy_image(mlx->mlx_ptr, image);
+    mlx_image_to_window(mlx, image, 0, 0);
+    mlx_delete_image(mlx, image);
 }
 
 int mandelbrot(t_complex c, int max_iterations)
