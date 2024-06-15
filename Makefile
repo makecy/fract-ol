@@ -34,6 +34,8 @@ SRC =	main.c \
 		utils.c \
 		color.c \
 		zooming.c \
+		julia.c \
+		messages.c \
 #Objects
 
 OBJ = $(SRC:.c=.o) 

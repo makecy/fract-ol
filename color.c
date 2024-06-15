@@ -6,7 +6,7 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 00:35:45 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/12 22:56:36 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/15 21:47:16 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,11 @@ int ft_pixel(int red, int green, int blue, int alpha)
 
 int get_color(int iterations)
 {
-	int red;
-	int blue;
-	int green;
+	int red = (iterations * 5) % 255;;
+	int blue = (iterations * 10) % 255;;
+	int green = (iterations * 20) % 255;;
     if (iterations == MAX_ITERATIONS)
-        return ft_pixel(0, 0, 0, 255);
+		return 0x000000;
     else
-    {
-        red = (iterations * 5) % 255;
-        blue = (iterations * 10) % 255;
-        green = (iterations * 20) % 255;
         return ft_pixel(red, green, blue, 255);
-    }
 }

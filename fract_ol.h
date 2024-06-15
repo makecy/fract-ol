@@ -6,7 +6,7 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 16:29:51 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/12 22:47:57 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/15 23:16:36 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 #include <string.h>
 #include <unistd.h>
 #include "MLX42/include/MLX42/MLX42.h"
+#include "/Users/mstefano/42_Projects/fract-ol/MLX42/include/glad/glad.h"
+#include "/Users/mstefano/42_Projects/fract-ol/MLX42/include/KHR/khrplatform.h"
+#include "/Users/mstefano/42_Projects/fract-ol/MLX42/include/lodepng/lodepng.h"
+#include "/Users/mstefano/42_Projects/fract-ol/MLX42/include/MLX42/MLX42_Int.h"
+#include "/Users/mstefano/42_Projects/fract-ol/MLX42/src/font/font.h"
 
 #define WIDTH 800
 #define HEIGHT 800
@@ -36,7 +41,7 @@ typedef struct s_complex
 	double imag;
 } t_complex;
 
-typedef struct s_mlx
+typedef struct s_fract
 {
     mlx_t *lib_mlx_ptr; 
     void *win_ptr;
@@ -46,25 +51,36 @@ typedef struct s_mlx
     int max_iter;
     int mouse_x;
     int mouse_y;
-} t_mlx;
+    double min_r;
+    double max_r;
+    double min_i;
+    double max_i;
+} t_fract;
 
 /* MANDELBROT */
 int mandelbrot(t_complex c, int max_iterations);
 void render_mandelbrot(mlx_t *mlx);
 void put_pixel(mlx_image_t *image, int y);
 
+/* JULIA*/
+// int	julia_shift(int x, int y, t_mlx *f);
+int	julia(t_fract *f, double zr, double zi);
+void	render_julia(t_fract *f);
+
+
 /* UTILS */
-double map(int value, int start1, int stop1, double start2, double stop2);
+double	map(int value, int start1, int stop1, double start2, double stop2);
+double	ft_atof(const char *str);
+void	fractal_options(t_fract *f);
+void	clean(t_fract *f);
 
 /* COLOR */
 int get_color(int iterations);
 
 /* ZOOMING */
-int compute_fractal(t_mlx *mlx, int x, int y);
-void render(t_mlx *mlx);
-void zoom_out(t_mlx *mlx, int x, int y);
-void zoom_in(t_mlx *mlx, int x, int y);
-void mouse_scroll_event(int button, double x, double y, void *param);
-void draw_rectangle(mlx_image_t *image, int x_start, int y_start, int width, int height, uint32_t color);
+void mouse_key_event(enum mouse_key key, enum action action, enum modifier_key modifier, void *param);
+void key_event(struct mlx_key_data key_data, void *param);
+void mouse_event(double x, double y, void *param);
+
 
 #endif
