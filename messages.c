@@ -6,20 +6,12 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:55:16 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/15 23:10:05 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/16 00:03:59 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
 
-static void exit_program(int exit_code, t_fract *f)
-{
-	if (!f)
-		exit(exit_code);
-	if(f->lib_mlx_ptr && f->win_ptr)
-		mlx_delete_image(f->lib_mlx_ptr, f->win_ptr);
-	exit(exit_code);
-}
 void	fractal_options(t_fract *f)
 {
 	ft_putendl_fd("Wrong Input", 1);

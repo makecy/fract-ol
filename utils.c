@@ -6,7 +6,7 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 00:34:32 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/15 23:16:19 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/16 00:04:27 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	clean(t_fract *f)
 {
     f->lib_mlx_ptr = NULL;
     f->win_ptr = NULL;
-    f->zoom = 0.0;
-    f->offsetX = 0.0;
-    f->offsetY = 0.0;
+    // f->zoom = 0.0;
+    // f->offsetX = 0.0;
+    // f->offsetY = 0.0;
     f->max_iter = 0;
     f->mouse_x = 0;
     f->mouse_y = 0;
@@ -65,4 +65,13 @@ double ft_atof(const char *str)
     }
 
     return sign * result;
+}
+
+void exit_program(int exit_code, t_fract *f)
+{
+	if (!f)
+		exit(exit_code);
+	if(f->lib_mlx_ptr && f->win_ptr)
+		mlx_delete_image(f->lib_mlx_ptr, f->win_ptr);
+	exit(exit_code);
 }
