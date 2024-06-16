@@ -6,7 +6,7 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 00:34:32 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/16 00:04:27 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/16 20:52:03 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,9 @@
 void	clean(t_fract *f)
 {
     f->lib_mlx_ptr = NULL;
-    f->win_ptr = NULL;
-    // f->zoom = 0.0;
-    // f->offsetX = 0.0;
-    // f->offsetY = 0.0;
-    f->max_iter = 0;
-    f->mouse_x = 0;
-    f->mouse_y = 0;
+    f->win = NULL;
+    f->offsetX = 0.0;
+    f->offsetY = 0.0;
     f->min_r = 0.0;
     f->max_r = 0.0;
     f->min_i = 0.0;
@@ -71,7 +67,7 @@ void exit_program(int exit_code, t_fract *f)
 {
 	if (!f)
 		exit(exit_code);
-	if(f->lib_mlx_ptr && f->win_ptr)
-		mlx_delete_image(f->lib_mlx_ptr, f->win_ptr);
+	if(f->lib_mlx_ptr && f->win)
+		mlx_delete_image(f->lib_mlx_ptr, f->win);
 	exit(exit_code);
 }

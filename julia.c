@@ -6,7 +6,7 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 00:09:41 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/15 22:39:06 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/16 21:25:25 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,36 +38,50 @@ int	julia(t_fract *f, double zr, double zi)
     return (n);
 }
 
-void render_julia(t_fract *mlx)
+void	render(t_fract *f)
 {
-    int x = 0;
-	int y = 0;
-	int i = 0;
-    double zr, zi;
-    mlx_image_t *img;
-    int color = 0;
+	int		x;
+	int		y;
+	double	pr;
+	double	pi;
+	int		nb_iter;
 
-    img = mlx_new_image(mlx->lib_mlx_ptr, WIDTH, HEIGHT);
-	while (x < WIDTH)
-    {
-		y = 0;
-		while (y < HEIGHT)
-        {
-            zr = mlx->min_r + (double)x * (mlx->max_r - mlx->min_r) / WIDTH;
-            zi = mlx->max_i + (double)y * (mlx->min_i - mlx->max_i) / HEIGHT;
-            i = julia(mlx, zr, zi);
-            if (i == MAX_ITERATIONS)
-                mlx_put_pixel(img, x, y, 0);
-            else
-            {
-                color = get_color(i);
-                mlx_put_pixel(img, x, y, color);
-            }
-			y++;
-        }
-		x++;
-    }
-    mlx_image_to_window(mlx->lib_mlx_ptr, img, 0, 0);
-    mlx_delete_image(mlx->lib_mlx_ptr, img);
+	mlx_clear_window(f->mlx, f->win);
+	y = -1;
+	while (++y < HEIGHT)
+	{
+		x = -1;
+		while (++x < WIDTH)
+		{
+			pr = f->min_r + (double)x * (f->max_r - f->min_r) / WIDTH;
+			pi = f->max_i + (double)y * (f->min_i - f->max_i) / HEIGHT;
+			nb_iter = calculate_fractal(f, pr, pi);
+			set_pixel_color(f, x, y, f->palette[nb_iter]);
+		}
+	}
+	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
+}
+
+void render_julia(t_fract *f)
+{
+	int x;
+	int y;
+	double zr;
+	double zi;
+	int nb_iter;
+	
+	mlx_clear_window(f->mlx, f->win);
+	y = -1;
+	while(++y < HEIGHT)
+	{
+		x = -1;
+		while (++x < WIDTH)
+		{
+			zr = f->min_r + (double)x * (f->max_r - f->min_r) / WIDTH;
+			zi = f->max_i + (double)y * (f->min_i - f->max_i) / HEIGHT;
+			nb_iter = julia(f, zr, zi);
+		}
+	}
+	mlx_put_image_to_window(f->mlx, f->win, 0, 0);
 }
 

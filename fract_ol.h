@@ -6,7 +6,7 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 16:29:51 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/16 00:17:32 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/16 21:24:36 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,32 @@
 #define HEIGHT 800
 #define MAX_ITERATIONS 1000
 
+typedef struct s_comp
+{
+	double real;
+	double imag;
+} t_comp;
+
 typedef struct s_fract
 {
     double min_r;
     double max_r;
     double min_i;
     double max_i;
+	double offsetX;
+	double offsetY;
 	int fractal_type;
-    void *win_ptr;
+    void *win;
     mlx_t *lib_mlx_ptr; 
 } t_fract;
 
+/* INITIALIZATION */
+
+void	handle_args(t_fract *f, int ac, char **av);
+void	init_mlx(t_fract *f);
+
 /* MANDELBROT */
-int mandelbrot(t_complex c, int max_iterations);
+int mandelbrot(t_comp c, int max_iterations);
 void render_mandelbrot(mlx_t *mlx);
 void put_pixel(mlx_image_t *image, int y);
 

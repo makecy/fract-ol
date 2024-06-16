@@ -30,11 +30,12 @@ LIBRARIES = $(LIBRARIES_PATH)/libft.a
 # Sources
 
 SRC =	main.c \
+		init.c \
 		mandelbrot.c \
-		utils.c \
+		julia.c \
 		color.c \
 		zooming.c \
-		julia.c \
+		utils.c \
 		messages.c \
 #Objects
 

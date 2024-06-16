@@ -6,7 +6,7 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:03:02 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/16 00:02:08 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/16 21:22:17 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ int main (int ac, char **av)
 		fractal_options(&f);
 	clean(&f);
 	handle_args(&f, ac, av);
-	// init_mlx(&f); TODO
-	// render_fractal(&f); TODO
+	init_mlx(&f);
+	if (f.fractal_type == 0)
+		render_mandelbrot(f.lib_mlx_ptr);
+	else if (f.fractal_type == 1)
+		render_julia(&f);
 	// mlx_hook(f.win_ptr, 2, 1L << 0, key_event, &f); TODO
 	// mlx_key_hook(f.win_ptr, key_event, &f); TODO
 	// mlx_mouse_hook(f.win_ptr, mouse_key_event, &f); TODO
-	// mlx_loop(f.lib_mlx_ptr); TODO
+	mlx_loop(f.lib_mlx_ptr);
 	
 }
