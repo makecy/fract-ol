@@ -6,7 +6,7 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 16:29:51 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/16 21:24:36 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:03:18 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void render_mandelbrot(mlx_t *mlx);
 void put_pixel(mlx_image_t *image, int y);
 
 /* JULIA*/
-// int	julia_shift(int x, int y, t_mlx *f);
-int	julia(t_fract *f, double zr, double zi);
+int		julia(t_fract *f, double zr, double zi);
 void	render_julia(t_fract *f);
 
 

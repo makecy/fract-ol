@@ -29,14 +29,14 @@ LIBRARIES = $(LIBRARIES_PATH)/libft.a
 
 # Sources
 
-SRC =	main.c \
-		init.c \
-		mandelbrot.c \
-		julia.c \
-		color.c \
-		zooming.c \
-		utils.c \
-		messages.c \
+SRC =	srcs/main.c \
+		srcs/init.c \
+		srcs/mandelbrot.c \
+		srcs/julia.c \
+		srcs/color.c \
+		srcs/zooming.c \
+		srcs/utils.c \
+		srcs/messages.c \
 #Objects
 
 OBJ = $(SRC:.c=.o) 
@@ -45,6 +45,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(MLX): 
+		@echo "$(GREEN)$(CHECK)Compiling MLX$(CHECK)$(RESET)"
 		cd MLX42 && cmake -B build && cmake --build build -j4;
 
 $(LIBRARIES):

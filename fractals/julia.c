@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   messages.c                                         :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/15 22:55:16 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/16 00:03:59 by mstefano         ###   ########.fr       */
+/*   Created: 2024/06/17 16:06:16 by mstefano          #+#    #+#             */
+/*   Updated: 2024/06/17 16:07:10 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "../fract_ol.h"
 
-void	fractal_options(t_fract *f)
+int	julia(t_fract *f, double zr, double zi)
 {
-	ft_putendl_fd("Wrong Input", 1);
-	ft_putendl_fd("Fractal options:", 1);
-	ft_putendl_fd("\t1. mandelbrot", 1);
-	ft_putendl_fd("\t2. julia ", 1);
-	ft_putendl_fd("\eUsage example :\t./fractol mandelbrot ", 1);
-	ft_putendl_fd("\eUsage example :\t./fractol julia 0.285 0.01 ", 1);
-	exit_program(1, f);
+    int		n;
+    double	tmp;
+
+    n = 0;
+    while (n < MAX_ITERATIONS)
+    {
+        if ((zi * zi + zr * zr) > 4.0)
+            break ;
+        tmp = 2 * zr * zi + f->offsetY;
+        zr = zr * zr - zi * zi + f->offsetX;
+        zi = tmp;
+        n++;
+    }
+    return (n);
 }

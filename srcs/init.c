@@ -6,11 +6,11 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 23:21:10 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/16 19:53:50 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:10:40 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "../includes/fract_ol.h"
 void	handle_args(t_fract *f, int ac, char **av)
 {
 	(void)ac;

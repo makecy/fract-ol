@@ -6,11 +6,11 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 00:35:45 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/16 17:24:14 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:10:45 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "../includes/fract_ol.h"
 
 int ft_pixel(int red, int green, int blue, int alpha)
 {

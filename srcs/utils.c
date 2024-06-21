@@ -6,11 +6,11 @@
 /*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 00:34:32 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/16 20:52:03 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:10:12 by mstefano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "../includes/fract_ol.h"
 
 void	clean(t_fract *f)
 {
