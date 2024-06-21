@@ -17,7 +17,7 @@ CC = cc
 
 #MLX
 
-MLXFLAGS = -ldl -lglfw -pthread -lm
+MLXFLAGS = -ldl -pthread -lm -lglfw
 MLX_PATH = ./MLX42/build
 MLX = $(MLX_PATH)/libmlx42.a
 
@@ -30,17 +30,15 @@ LIBRARIES = $(LIBRARIES_PATH)/libft.a
 # Sources
 
 SRC =	srcs/main.c \
-		srcs/init.c \
-		srcs/mandelbrot.c \
-		srcs/julia.c \
 		srcs/color.c \
 		srcs/zooming.c \
 		srcs/utils.c \
 		srcs/messages.c \
-#Objects
+		srcs/init.c 
+
+# Objects
 
 OBJ = $(SRC:.c=.o) 
-
 
 all: $(NAME)
 

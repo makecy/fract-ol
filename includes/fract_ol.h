@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   fract_ol.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: makecy <makecy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 16:29:51 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/17 16:03:18 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:59:47 by makecy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_OL_H
 #define FRACT_OL_H
 
-#include "libraries/Libft/libft.h"
-#include "libraries/ft_printf/ft_printf.h"
-#include "libraries/get_next_line/get_next_line_bonus.h"
+#include "../libraries/Libft/libft.h"
+#include "../libraries/ft_printf/ft_printf.h"
+#include "../libraries/get_next_line/get_next_line_bonus.h"
 #include <fcntl.h>
 #include <limits.h>
 #include <stdarg.h>
@@ -24,12 +24,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "MLX42/include/MLX42/MLX42.h"
-#include "/Users/mstefano/42_Projects/fract-ol/MLX42/include/glad/glad.h"
-#include "/Users/mstefano/42_Projects/fract-ol/MLX42/include/KHR/khrplatform.h"
-#include "/Users/mstefano/42_Projects/fract-ol/MLX42/include/lodepng/lodepng.h"
-#include "/Users/mstefano/42_Projects/fract-ol/MLX42/include/MLX42/MLX42_Int.h"
-#include "/Users/mstefano/42_Projects/fract-ol/MLX42/src/font/font.h"
+#include "../MLX42/include/MLX42/MLX42.h"
 
 /* DIMENSIONS */
 #define WIDTH 800

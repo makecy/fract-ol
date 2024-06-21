@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: makecy <makecy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 23:21:10 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/17 16:10:40 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/21 19:07:20 by makecy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fract_ol.h"
+
 void	handle_args(t_fract *f, int ac, char **av)
 {
 	(void)ac;
@@ -25,8 +26,8 @@ void	handle_args(t_fract *f, int ac, char **av)
 	else if (ft_strncmp(av[1], "julia", 5) == 0)
 	{
 		f->fractal_type = 1;
-		f->offsetX = atof(av[1]);
-		f->offsetY = atof(av[2]);
+		f->offsetX = ft_atof(av[1]);
+		f->offsetY = ft_atof(av[2]);
 		f->min_r = -2.0;
 		f->max_r = 2.0;
 		f->min_i = -2.0;
