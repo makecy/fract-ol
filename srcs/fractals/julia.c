@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: makecy <makecy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:06:16 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/17 16:07:10 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/22 18:16:18 by makecy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fract_ol.h"
+#include "../../includes/fract_ol.h"
 
 int	julia(t_fract *f, double zr, double zi)
 {

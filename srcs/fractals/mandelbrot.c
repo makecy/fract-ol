@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstefano <mstefano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: makecy <makecy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:07:29 by mstefano          #+#    #+#             */
-/*   Updated: 2024/06/17 16:07:55 by mstefano         ###   ########.fr       */
+/*   Updated: 2024/06/22 18:16:21 by makecy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../includes/fract_ol.h"
 
 int mandelbrot(t_comp c, int max_iterations)
 {

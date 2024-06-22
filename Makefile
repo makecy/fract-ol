@@ -4,11 +4,16 @@ NAME= fractol
 
 #Text Colors and Emojis
 
-GREEN=\033[0;32m
-RESET=\033[0m
-RED=\033[0;31m
-CHECK=\xE2\x9C\x94
-BROOM=\xF0\x9F\xA7\xB9
+# for linux 
+RED=$(shell tput setaf 1)
+GREEN=$(shell tput setaf 2)
+RESET=$(shell tput sgr0)
+# for mac 
+# RED=\033[0;31m
+# GREEN=\033[0;32m
+# RESET=\033[0m
+# CHECK=\xE2\x9C\x94
+# BROOM=\xF0\x9F\xA7\xB9
 
 #Compilers
 
@@ -17,15 +22,15 @@ CC = cc
 
 #MLX
 
-MLXFLAGS = -ldl -pthread -lm -lglfw
-MLX_PATH = ./MLX42/build
-MLX = $(MLX_PATH)/libmlx42.a
+MLXFLAGS = -ldl -lglfw -pthread -lm 
+MLXPATH = ./MLX42/build
+MLX = $(MLXPATH)/libmlx42.a
 
 #Libft
 
-LIBRARIES_PATH = ./libraries
-INCLUDE = -L $(LIBRARIES_PATH) -lft
-LIBRARIES = $(LIBRARIES_PATH)/libft.a
+LIBRARIESPATH = ./libraries
+INCLUDE = -L $(LIBRARIESPATH) -lft
+LIBRARIES = $(LIBRARIESPATH)/libft.a
 
 # Sources
 
@@ -34,7 +39,9 @@ SRC =	srcs/main.c \
 		srcs/zooming.c \
 		srcs/utils.c \
 		srcs/messages.c \
-		srcs/init.c 
+		srcs/init.c \
+		srcs/fractals/julia.c \
+		srcs/fractals/mandelbrot.c 
 
 # Objects
 
@@ -47,11 +54,11 @@ $(MLX):
 		cd MLX42 && cmake -B build && cmake --build build -j4;
 
 $(LIBRARIES):
-	@make -C $(LIBRARIES_PATH)
+	@make -C $(LIBRARIESPATH)
 	@echo "$(GREEN)$(CHECK)Compiled Libraries Successfully$(CHECK)$(RESET)"
 
 $(NAME): $(LIBRARIES) $(MLX) $(OBJ)  
-	$(CC) $(CFLAGS) $(MLX) $(MLX_FLAGS) $(LIBRARIES) -o $(NAME) $(OBJ) $(INCLUDE) -lglfw
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(INCLUDE) $(MLX) $(LIBRARIES) $(MLXFLAGS)
 	@echo "$(GREEN)$(CHECK)Compiled fract-ol Successfully$(CHECK)$(RESET)"
 
 submodule:
@@ -61,14 +68,15 @@ submodule:
 	@$(CC) $(CFLAGS) -c $< -o $@
 	
 clean :
-	@make -C $(LIBRARIES_PATH) clean
-	@$(RM) $(OBJ) $(BONUS_OBJ)
-	
-fclean : clean
-	@$(RM) $(NAME) $(BONUS_NAME)
-	@make fclean -C $(LIBRARIES_PATH)
-	@echo "$(RED)$(BROOM)Cleaned Successfully$(RESET)$(BROOM)"
+	@rm -f $(OBJ) 
+	@make -C $(LIBRARIESPATH) clean
+	@echo "$(RED)$(BROOM)Cleaning object files$(RESET)$(BROOM)"
 
+
+fclean : clean
+	@rm -f $(NAME)
+	@make fclean -C $(LIBRARIESPATH)
+	@echo "$(RED)$(BROOM)Cleaning object files && $(NAME) $(RESET)$(BROOM)"
 
 re : fclean all
 
